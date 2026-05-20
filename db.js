@@ -5,7 +5,7 @@ const buatKoneksi = async () => {
         host: '127.0.0.1',
         port: 3306,
         user: 'u3cfe03y_hilal',
-        password: 'QQSVGFay6m7_Jms',
+        password: 'QQsVGFay6m7_Jms',
         database: 'u3cfe03y_transaksi'
     })
 }
