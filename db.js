@@ -9,6 +9,14 @@ const buatKoneksi = async () => {
         database: 'u3cfe03y_transaksi'
     })
 }
+
+const bacaDetailBackup = async (id_backup) => {
+    const db = await buatKoneksi();
+    sql = `SELECT * FROM backup_transaksi WHERE id_backup = '${id_backup}'ORDER BY tgl_jam`;
+    const [rows] = await db.execute(sql);
+    return rows.length > 0 ? rows : false;
+}
+
 const bacaBackup = async () => {
     const db = await buatKoneksi();
     sql = `SELECT * FROM backup ORDER BY waktu DESC`;
@@ -35,4 +43,4 @@ const tambahTransaksi = async (idx, id, waktux, nominalx, jenisx, deskripsix) =>
         return "0";
     }
 }
-module.exports = {buatKoneksi, bacaBackup,  tambahBackup, tambahTransaksi};
+module.exports = {buatKoneksi, bacaDetailBackup, bacaBackup,  tambahBackup, tambahTransaksi};
