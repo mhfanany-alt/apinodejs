@@ -9,6 +9,12 @@ const buatKoneksi = async () => {
         database: 'u3cfe03y_transaksi'
     })
 }
+const bacaBackup = async () => {
+    const db = await buatKoneksi();
+    sql = `SELECT * FROM backup ORDER BY waktu DESC`;
+    const [rows] = await db.execute(sql);
+    return rows.length > 0 ? rows : false;
+}
 const tambahBackup = async (id, nama, channel) => {
     const db = await buatKoneksi();
     sql = `INSERT INTO backup VALUES('${id}', '${nama}', '${channel}',NOW())`;
@@ -29,4 +35,4 @@ const tambahTransaksi = async (idx, id, waktux, nominalx, jenisx, deskripsix) =>
         return "0";
     }
 }
-module.exports = {buatKoneksi, tambahBackup, tambahTransaksi};
+module.exports = {buatKoneksi, bacaBackup,  tambahBackup, tambahTransaksi};
