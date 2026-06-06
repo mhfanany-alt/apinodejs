@@ -18,7 +18,7 @@ app.listen(port, () => {
 })
 
 app.post("/detail_backup", async (req, res) => {
-    let idbackup = req.body.id_backup;
+    let idbackup = req.body.idbackup;
     const dtdetail = await db.bacaDetailBackup(idbackup);
     if(dtdetail == false){
         res.send('{"kode":"00","pesan":"Data Detail Backup Tidak DiTemukan"}');
