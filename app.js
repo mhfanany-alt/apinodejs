@@ -17,6 +17,15 @@ app.listen(port, () => {
     console.log(`API berjalan di port ${port}`);
 })
 
+app.get("/daftar_backup", async (req, res) => {
+    const dtbackup = await db.bacaBackup();
+    if(dtbackup == false){
+        res.send('{"kode":"00","pesan":"Data Backup  Tidak DiTemukan"}');
+    }else{
+        res.send('{"kode":"01","pesan":"Data Backup DiTemukan","data":' + JSON.stringify(dtbackup) + '}');
+    }
+})
+
 app.post("/backup", async (req, res) => {
     let pesanx, kodex;
     let nama = req.body.nama_backup;
